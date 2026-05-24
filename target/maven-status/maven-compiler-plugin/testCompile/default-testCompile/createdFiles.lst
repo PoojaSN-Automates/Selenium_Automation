@@ -1,0 +1,9 @@
+tests\CartTest.class
+tests\VerifyMenuItems.class
+tests\CompleteOrderFlow.class
+tests\CheckOutTest.class
+tests\InvalidEnterDetailsTest.class
+tests\ProductsSortTest.class
+com\selenium\framework\AppTest.class
+tests\LoginTest.class
+tests\ProductTest.class
