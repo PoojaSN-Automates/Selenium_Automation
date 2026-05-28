@@ -1,0 +1,17 @@
+target/
+
+test-output/
+
+reports/
+
+*.class
+
+*.log
+
+.idea/
+
+.settings/
+
+.project
+
+.classpath
