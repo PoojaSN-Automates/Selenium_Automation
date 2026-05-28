@@ -7,8 +7,11 @@ import base.Testbase;
 import pages.CheckOutPage;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.ConfigReader;
 
 public class InvalidEnterDetailsTest extends Testbase {
+	
+	 ConfigReader config = new ConfigReader();
 	
 	@Test
 	
@@ -17,7 +20,7 @@ public class InvalidEnterDetailsTest extends Testbase {
 	LoginPage login= new LoginPage(Testbase.getDriver());
 	
 	try {
-		HomePage home= login.verifyLogin("standard_user", "secret_sauce");
+		HomePage home= login.verifyLogin(config.getUsername(),config.getPassword());
 		
 
 		String [] items= {"Sauce Labs Backpack",

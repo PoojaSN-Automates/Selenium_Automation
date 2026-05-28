@@ -1,33 +1,26 @@
 <suite name="SeleniumTests" parallel="methods" thread-count="3">
-<listeners>
 
-<listener class-name="utils.MyListener"/>
- <listener class-name="utils.RetryListener"/>
+    <listeners>
 
-</listeners>
-	<test name="LoginTest">
-		<classes>
+        <listener class-name="utils.MyListener"/>
+        <listener class-name="utils.RetryListener"/>
 
-	<class name="tests.LoginTest" />
-	<class name="tests.ProductTest" />
-	<class name="tests.CartTest" />
-	<class name="tests.CheckOutTest" />
-	<class name="tests.InvalidEnterDetailsTest" />
-	<class name="tests.VerifyMenuItems" />
-	<class name="tests.ProductsSortTest" />
-		
+    </listeners>
 
-		<!-- 
-	<class name="tests.LoginTest" />
-	<class name="tests.ProductTest" />
-	<class name="tests.CartTest" />
-	<class name="tests.CheckOutTest" />
-	<class name="tests.InvalidEnterDetailsTest" />
-	<class name="tests.verifyMenuItems" />
-	<class name="tests.ProductsSortTest" />
-	 -->
+    <test name="LoginTest">
 
-		</classes>
+        <classes>
 
-	</test>
+            <class name="tests.LoginTest" />
+            <class name="tests.ProductTest" />
+            <class name="tests.CartTest" />
+            <class name="tests.CheckOutTest" />
+            <class name="tests.InvalidEnterDetailsTest" />
+            <class name="tests.VerifyMenuItems" />
+            <class name="tests.ProductsSortTest" />
+
+        </classes>
+
+    </test>
+
 </suite>

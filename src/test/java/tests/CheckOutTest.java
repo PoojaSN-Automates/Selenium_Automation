@@ -7,18 +7,21 @@ import base.Testbase;
 import pages.CheckOutPage;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.ConfigReader;
 import utils.Utility;
 
 public class CheckOutTest extends Testbase{
 
 	Utility util= new Utility();
+	 ConfigReader config = new ConfigReader();
+	 
 	@Test
 	public void verifyCheckOut() {
 		
 		LoginPage login= new LoginPage(Testbase.getDriver());
 		
 		try {
-			HomePage home= login.verifyLogin("standard_user", "secret_sauce");
+			HomePage home= login.verifyLogin(config.getUsername(),config.getPassword());
 			
 			//util.isAlertPresent();
 			
@@ -57,7 +60,7 @@ public class CheckOutTest extends Testbase{
 LoginPage login= new LoginPage(Testbase.getDriver());
 		
 		try {
-			HomePage home= login.verifyLogin("standard_user", "secret_sauce");
+			HomePage home= login.verifyLogin(config.getUsername(),config.getPassword());
 			
 			//util.isAlertPresent();
 			
@@ -95,7 +98,7 @@ LoginPage login= new LoginPage(Testbase.getDriver());
 	LoginPage login= new LoginPage(Testbase.getDriver());
 		
 		try {
-			HomePage home= login.verifyLogin("standard_user", "secret_sauce");
+			HomePage home= login.verifyLogin(config.getUsername(),config.getPassword());
 			
 			//util.isAlertPresent();
 			

@@ -10,8 +10,11 @@ import base.Testbase;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ProductsSortPage;
+import utils.ConfigReader;
 
 public class ProductsSortTest extends Testbase{
+	
+	ConfigReader config = new ConfigReader();
 
 	@Test
 	public void verifyallSortingItems() {
@@ -20,7 +23,7 @@ public class ProductsSortTest extends Testbase{
 		
 		try {
 			
-			HomePage home= login.verifyLogin("standard_user", "secret_sauce");
+			HomePage home= login.verifyLogin(config.getUsername(),config.getPassword());
 			
 			ProductsSortPage producsort= new ProductsSortPage(getDriver());
 			Thread.sleep(2000);
@@ -47,7 +50,7 @@ public class ProductsSortTest extends Testbase{
 
 		LoginPage login= new LoginPage(Testbase.getDriver());
 
-        HomePage home= login.verifyLogin("standard_user", "secret_sauce");
+        HomePage home= login.verifyLogin(config.getUsername(),config.getPassword());
 
         ProductsSortPage sort= new ProductsSortPage(getDriver());
 
@@ -66,7 +69,7 @@ public class ProductsSortTest extends Testbase{
 
     	LoginPage login= new LoginPage(Testbase.getDriver());
 
-        HomePage home= login.verifyLogin("standard_user", "secret_sauce");
+        HomePage home= login.verifyLogin(config.getUsername(),config.getPassword());
 
         ProductsSortPage sort= new ProductsSortPage(getDriver());
 
@@ -87,7 +90,7 @@ public class ProductsSortTest extends Testbase{
 
     	LoginPage login= new LoginPage(Testbase.getDriver());
 
-        HomePage home= login.verifyLogin("standard_user", "secret_sauce");
+        HomePage home= login.verifyLogin(config.getUsername(),config.getPassword());
 
         ProductsSortPage sort= new ProductsSortPage(getDriver());
 
@@ -107,7 +110,7 @@ public class ProductsSortTest extends Testbase{
 
     	LoginPage login= new LoginPage(Testbase.getDriver());
 
-        HomePage home= login.verifyLogin("standard_user", "secret_sauce");
+        HomePage home= login.verifyLogin(config.getUsername(),config.getPassword());
 
         ProductsSortPage sort= new ProductsSortPage(getDriver());
 

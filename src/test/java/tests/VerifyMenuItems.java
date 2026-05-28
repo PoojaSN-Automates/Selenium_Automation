@@ -10,9 +10,12 @@ import base.Testbase;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.MenuPage;
+import utils.ConfigReader;
 
 
 public class VerifyMenuItems extends Testbase{
+	
+	ConfigReader config = new ConfigReader();
 
 	@Test
 	public void verifyallMenuItems() {
@@ -21,7 +24,7 @@ public class VerifyMenuItems extends Testbase{
 		
 		try {
 			
-			HomePage home= login.verifyLogin("standard_user", "secret_sauce");
+			HomePage home= login.verifyLogin(config.getUsername(),config.getPassword());
 			
 			MenuPage menu= new MenuPage(getDriver());
 			Thread.sleep(2000);
@@ -53,7 +56,7 @@ public void verifylogout() {
 		
 		try {
 			
-			HomePage home= login.verifyLogin("standard_user", "secret_sauce");
+			HomePage home= login.verifyLogin(config.getUsername(),config.getPassword());
 			
 			MenuPage menu= new MenuPage(getDriver());
 			Thread.sleep(2000);

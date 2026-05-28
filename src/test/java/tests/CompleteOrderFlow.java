@@ -8,8 +8,12 @@ import pages.CheckOutPage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.MenuPage;
+import utils.ConfigReader;
 
 public class CompleteOrderFlow extends Testbase{
+	
+	 ConfigReader config = new ConfigReader();
+
 
 	@Test
 public void verifyCompleteOrder() {
@@ -17,7 +21,7 @@ public void verifyCompleteOrder() {
 		LoginPage login= new LoginPage(Testbase.getDriver());
 		
 		try {
-			HomePage home= login.verifyLogin("standard_user", "secret_sauce");
+			HomePage home= login.verifyLogin(config.getUsername(),config.getPassword());
 			
 			String [] items= {"Sauce Labs Backpack",
 					"Sauce Labs Bike Light",

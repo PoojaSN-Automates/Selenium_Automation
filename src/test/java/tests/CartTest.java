@@ -6,8 +6,12 @@ import org.testng.annotations.Test;
 import base.Testbase;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.ConfigReader;
 
 public class CartTest extends Testbase{
+	
+	ConfigReader config = new ConfigReader();
+	
 	@Test
 	public void verifySingleProductCartCount() {
 		
@@ -15,7 +19,7 @@ public class CartTest extends Testbase{
 		LoginPage login= new LoginPage(Testbase.getDriver());
 		
 		try {
-			HomePage home= login.verifyLogin("standard_user", "secret_sauce");
+			HomePage home= login.verifyLogin(config.getUsername(),config.getPassword());
 			home.addToCart("Sauce Labs Backpack");
 			Assert.assertEquals(home.getCartCount(), "1");
 			
@@ -34,7 +38,7 @@ public class CartTest extends Testbase{
 	public void verifyMulipleProductsCartCount() {
 		LoginPage login= new LoginPage(Testbase.getDriver());
 		try {
-			HomePage home= login.verifyLogin("standard_user", "secret_sauce");
+			HomePage home= login.verifyLogin(config.getUsername(),config.getPassword());
 			String [] items= {"Sauce Labs Backpack",
 					"Sauce Labs Bike Light",
 					"Sauce Labs Bolt T-Shirt"

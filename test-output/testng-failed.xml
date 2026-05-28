@@ -7,13 +7,13 @@
   </listeners>
   <test thread-count="3" parallel="methods" name="LoginTest(failed)">
     <classes>
-      <class name="tests.ProductsSortTest">
+      <class name="tests.CartTest">
         <methods>
-          <include name="verifyallSortingItems"/>
           <include name="setUp"/>
           <include name="tearDown"/>
+          <include name="verifySingleProductCartCount"/>
         </methods>
-      </class> <!-- tests.ProductsSortTest -->
+      </class> <!-- tests.CartTest -->
     </classes>
   </test> <!-- LoginTest(failed) -->
 </suite> <!-- Failed suite [SeleniumTests] -->
