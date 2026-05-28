@@ -7,7 +7,14 @@
 </listeners>
 	<test name="LoginTest">
 		<classes>
-		
+
+	<class name="tests.LoginTest" />
+	<class name="tests.ProductTest" />
+	<class name="tests.CartTest" />
+	<class name="tests.CheckOutTest" />
+	<class name="tests.InvalidEnterDetailsTest" />
+	<class name="tests.verifyMenuItems" />
+	<class name="tests.ProductsSortTest" />
 		
 
 		<!-- 
