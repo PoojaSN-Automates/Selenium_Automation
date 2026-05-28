@@ -16,7 +16,7 @@ public class ConfigReader {
 			prop= new Properties();
 			prop.load(fis);
 		} catch (IOException e) {
-			e.printStackTrace();
+			 throw new RuntimeException("Config file not found");
 		}
 	}
 	
@@ -24,9 +24,9 @@ public class ConfigReader {
 		return prop.getProperty("browser");
 	}
 	
-	public String getUrl() {
+	/*public String getUrl() {
 		return prop.getProperty("url");
-	}
+	}*/
 	
 	public String getUsername() {
 
@@ -53,4 +53,25 @@ public class ConfigReader {
 	            prop.getProperty(
 	                    "headless"));
 	}
+	
+	//For multiple environments
+	public String getUrl() {
+		String env = System.getProperty("environment", prop.getProperty("environment"));
+
+        switch (env.toLowerCase()) {
+
+            case "qa":
+                return prop.getProperty("qa.url");
+
+            case "uat":
+                return prop.getProperty("uat.url");
+
+            case "prod":
+                return prop.getProperty("prod.url");
+
+            default:
+                throw new RuntimeException("Invalid environment: " + env);
+        }
+    }
+	
 }
