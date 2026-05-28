@@ -13,7 +13,7 @@
 	<class name="tests.CartTest" />
 	<class name="tests.CheckOutTest" />
 	<class name="tests.InvalidEnterDetailsTest" />
-	<class name="tests.verifyMenuItems" />
+	<class name="tests.VerifyMenuItems" />
 	<class name="tests.ProductsSortTest" />
 		
 
