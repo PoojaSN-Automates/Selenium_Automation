@@ -167,7 +167,41 @@ Screenshots are automatically captured for:
 * Timeout Failures
 
 ---
+# Test Screenshots
 
+## Login Test
+
+![Login Test](screenshots/verifyLogin.png)
+
+## Add To Cart Test
+
+![Cart Test](screenshots/verifyaddtocart.png)
+
+## Checkout Test
+
+![Checkout Test](screenshots/verifyCheckOut.png)
+
+## Continue Shopping
+
+![Continue Shopping](screenshots/verifyContinueShopping.png)
+
+## Invalid Checkout Validation
+
+![Invalid Details](screenshots/verifyInvalidetails.png)
+
+## Menu Validation
+
+![Menu Validation](screenshots/verifyallMenuItems.png)
+
+## Product Sorting Validation
+
+![Sorting Validation](screenshots/verifyallSortingItems.png)
+
+## Logout Validation
+
+![Logout Validation](screenshots/verifylogout.png)
+
+---
 # Run the Project
 
 ## Using Maven
