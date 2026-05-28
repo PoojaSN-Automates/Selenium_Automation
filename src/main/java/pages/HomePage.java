@@ -99,9 +99,9 @@ public class HomePage extends BasePage {
         + productName +
         "']"
 
-        + "/ancestor::div[@class='inventory_item']"
+        + "/ancestor::div[@class='cart_item']"
 
-        + "//button");
+        + "//button[text()='Remove']");
 
         click(removeBtn);
     }
