@@ -49,9 +49,12 @@ public class ConfigReader {
 
 	public boolean isHeadless() {
 
-	    return Boolean.parseBoolean(
-	            prop.getProperty(
-	                    "headless"));
+		boolean headless = Boolean.parseBoolean(
+	            prop.getProperty("headless"));
+
+	    System.out.println("Headless = " + headless);
+
+	    return headless;
 	}
 	
 	//For multiple environments

@@ -54,7 +54,10 @@ public class Testbase {
             options.addArguments("--guest");
 
             // CI STABLE HEADLESS OPTIONS
-            if (config.isHeadless()) {
+            boolean isGitHub = System.getenv("GITHUB_ACTIONS") != null;
+
+            if (config.isHeadless() || isGitHub) {
+
                 options.addArguments("--headless=new");
                 options.addArguments("--window-size=1920,1080");
                 options.addArguments("--no-sandbox");
@@ -70,6 +73,9 @@ public class Testbase {
 
             options.setExperimentalOption("prefs", prefs);
 
+            System.out.println("Headless setting = " + config.isHeadless());
+            System.out.println("GitHub Actions = " + (System.getenv("GITHUB_ACTIONS") != null));
+            
             localDriver = new ChromeDriver(options);
             
             System.out.println("Chrome Driver Created Successfully");
