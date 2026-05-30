@@ -11,6 +11,11 @@ import org.openqa.selenium.io.FileHandler;
 public class ScreenshotUtil {
 
 	public static String captureScreenshot(WebDriver driver,String testname) {
+		
+		 if (driver == null) {
+	            System.out.println("Driver is NULL. Screenshot cannot be captured.");
+	            return null;
+	        }
 
 		File dir= new File("./screenshots");
 		if(!dir.exists()) {
@@ -25,6 +30,7 @@ public class ScreenshotUtil {
 		try {
 
 			FileHandler.copy(src, dest);
+			
 		} catch(IOException e) {
 			e.printStackTrace();
 		}

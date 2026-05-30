@@ -15,6 +15,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import utils.ConfigReader;
 
 public class Testbase {
@@ -29,9 +30,13 @@ public class Testbase {
     @BeforeMethod
     public void setUp() {
 
+    	System.out.println("===== SETUP STARTED =====");
+    	
         config = new ConfigReader();
 
         String browser = System.getProperty("browser", config.getBrowser());
+        System.out.println("Browser = " + browser);
+        
         String url = config.getUrl();
 
         WebDriver localDriver = null;
@@ -39,6 +44,8 @@ public class Testbase {
         //  CHROME 
         if (browser.equalsIgnoreCase("chrome")) {
 
+        	 System.out.println("Creating ChromeDriver...");
+        	 WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
 
             options.addArguments("--disable-notifications");
@@ -64,11 +71,14 @@ public class Testbase {
             options.setExperimentalOption("prefs", prefs);
 
             localDriver = new ChromeDriver(options);
+            
+            System.out.println("Chrome Driver Created Successfully");
         }
 
         // FIREFOX
         else if (browser.equalsIgnoreCase("firefox")) {
 
+        	WebDriverManager.firefoxdriver().setup();
             FirefoxOptions options = new FirefoxOptions();
 
             if (config.isHeadless()) {
@@ -76,11 +86,13 @@ public class Testbase {
             }
 
             localDriver = new FirefoxDriver(options);
+            System.out.println("Firefox Driver Created Successfully");
         }
 
         //  EDGE
         else if (browser.equalsIgnoreCase("edge")) {
 
+        	WebDriverManager.edgedriver().setup();
             EdgeOptions options = new EdgeOptions();
 
             if (config.isHeadless()) {
@@ -89,6 +101,7 @@ public class Testbase {
             }
 
             localDriver = new EdgeDriver(options);
+            System.out.println("Edge Driver Created Successfully");
         }
 
         else {
@@ -96,20 +109,33 @@ public class Testbase {
         }
 
         driver.set(localDriver);
+        
+        System.out.println("Driver stored in ThreadLocal");
 
         getDriver().manage().timeouts()
                 .implicitlyWait(Duration.ofSeconds(config.getTimeout()));
 
-
+        System.out.println("Implicit wait set");
+        
         getDriver().get(url);
+        
+        System.out.println("URL opened successfully");
+        System.out.println("===== SETUP COMPLETED =====");
     }
 
     @AfterMethod
     public void tearDown() {
+    	
+    	  System.out.println("===== TEARDOWN STARTED =====");
 
         if (getDriver() != null) {
             getDriver().quit();
             driver.remove();
+            
+            System.out.println("Driver closed successfully");
         }
+        
+        System.out.println("===== TEARDOWN COMPLETED =====");
     }
+    
 }

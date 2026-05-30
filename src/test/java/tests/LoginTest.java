@@ -13,7 +13,7 @@ import utils.TestResultManager;
 
 public class LoginTest extends Testbase {
 	
-	@DataProvider(name="excelData",parallel=true)
+	@DataProvider(name="excelData",parallel=false)
 	public Object[][] getData(){
 		
 		 System.out.println("DataProvider running");
