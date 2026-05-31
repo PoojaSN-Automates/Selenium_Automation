@@ -1,4 +1,3 @@
-![CI](https://github.com/PoojaSN-Automates/<Selenium_Automation>/actions/workflows/selenium-tests.yml/badge.svg)
 # Selenium Automation Framework
 
 ## Project Overview
