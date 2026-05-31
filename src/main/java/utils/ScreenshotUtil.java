@@ -22,7 +22,9 @@ public class ScreenshotUtil {
 			dir.mkdir();
 		}
 		
-		String path= System.getProperty("user.dir") + "/screenshots/" + testname + ".png";
+		 String timestamp = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss").format(new java.util.Date());
+
+		 String path = System.getProperty("user.dir")+ "/screenshots/"+ testname + "_" + timestamp + ".png";
 
 		File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		File dest = new File(path);

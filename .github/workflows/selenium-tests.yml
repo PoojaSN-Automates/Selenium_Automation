@@ -3,7 +3,7 @@ name: Selenium Tests
 on:
   push:
     branches: [ "main", "master" ]
-  workflow_dispatch: # 👈 This enables the manual "Run workflow" button in your GitHub browser!
+  workflow_dispatch:
 
 jobs:
   run-tests:
@@ -21,3 +21,27 @@ jobs:
 
       - name: Run tests
         run: mvn clean test
+
+      # Upload Extent Reports
+      - name: Upload Extent Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ExtentReport
+          path: reports/
+
+      # Upload Screenshots
+      - name: Upload Screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Screenshots
+          path: screenshots/
+
+      # Upload Surefire Reports
+      - name: Upload TestNG Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestNGReports
+          path: target/surefire-reports/
