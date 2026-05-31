@@ -19,7 +19,7 @@ public class ExtentManager {
             
 
             // Report path
-            String reportPath = "./reports/ExtentReport_"+ timeStamp+ ".html";
+            String reportPath = "./reports/ExtentReport.html";
 
             // Spark Reporter
             ExtentSparkReporter reporter = new ExtentSparkReporter(reportPath);
