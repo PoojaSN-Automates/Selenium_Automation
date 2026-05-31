@@ -36,6 +36,10 @@ post {
             reportName: 'Extent Report'
         ])
 
+        archiveArtifacts artifacts: 'reports/**/*.*',
+                 allowEmptyArchive: true
+                 
+                 
         archiveArtifacts artifacts: 'screenshots/**/*.*',
                          allowEmptyArchive: true
     }

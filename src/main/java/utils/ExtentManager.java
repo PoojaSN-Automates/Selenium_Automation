@@ -28,6 +28,7 @@ public class ExtentManager {
             reporter.config().setReportName("SauceDemo Automation Report");
             reporter.config().setDocumentTitle("Automation Test Results");
 
+            reporter.config().setTimelineEnabled(true);
             // Extent Reports
             extent = new ExtentReports();
             extent.attachReporter(reporter);
