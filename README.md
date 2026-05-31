@@ -2,41 +2,40 @@
 
 ## Project Overview
 
-This project is a Hybrid Selenium Automation Framework developed using Java, Selenium WebDriver, TestNG, Maven, and Jenkins for automating the SauceDemo application.
+This project is a Hybrid Selenium Automation Framework developed using Java, Selenium WebDriver, TestNG, Maven, Jenkins, and GitHub Actions for automating the SauceDemo application.
 
 The framework follows the Page Object Model (POM) design pattern and includes reusable utilities, reporting, listeners, retry mechanisms, Excel integration, screenshots, parallel execution, and CI/CD support.
 
 ---
 
-# Tech Stack
+## Tech Stack
 
 * Java
 * Selenium WebDriver
 * TestNG
 * Maven
 * Jenkins
+* GitHub Actions
 * Git & GitHub
 * Apache POI
 * Extent Reports
 
 ---
 
-# Framework Features
+## Framework Features
 
-## Page Object Model (POM)
+### Page Object Model (POM)
 
 Implemented separate page classes for:
 
 * Login Page
-* Home Page
+* Product Page
 * Cart Page
 * Checkout Page
 * Menu Page
 * Product Sorting Page
 
----
-
-## TestNG Features
+### TestNG Features
 
 * Assertions
 * DataProvider
@@ -45,20 +44,25 @@ Implemented separate page classes for:
 * TestNG XML Execution
 * Listeners
 
----
-
-## Reporting
+### Reporting
 
 Implemented Extent Reports with:
 
-* Timestamped Reports
-* Screenshot Attachments
 * Pass/Fail Logging
+* Screenshot Attachments
 * System Information
+* Execution Summary Dashboard
+* Timeline View
 
----
+### Screenshot Capture
 
-## Utilities
+Automatic screenshot capture for:
+
+* Failed Tests
+* Skipped Tests
+* Timeout Failures
+
+### Utilities
 
 Reusable utility methods for:
 
@@ -66,78 +70,89 @@ Reusable utility methods for:
 * Element Waits
 * Alert Handling
 * Screenshot Capture
-* Excel Read/Write
+* Excel Read/Write Operations
 
----
+### Excel Integration
 
-## Excel Integration
-
-Implemented Excel-driven testing using Apache POI:
+Implemented Data Driven Testing using Apache POI:
 
 * Read test data from Excel
 * Write PASS/FAIL status back to Excel
 
+### Environment Configuration
+
+Supports multiple environments using config.properties:
+
+* QA
+* UAT
+* PROD
+
+Environment can be selected dynamically during execution.
+
+### Parallel Execution
+
+Implemented ThreadLocal WebDriver for thread-safe parallel execution.
+
+Example:
+
+<suite name="SeleniumTests" parallel="methods" thread-count="3">
+
+### CI/CD Integration
+
+#### GitHub Actions
+
+Configured GitHub Actions for:
+
+* Automated Test Execution
+* Headless Browser Execution
+* Maven Build Execution
+* Continuous Integration
+
+#### Jenkins Pipeline
+
+Configured Jenkins Pipeline for:
+
+* Source Code Checkout
+* Maven Build
+* Test Execution
+* Extent Report Publishing
+* Screenshot Archiving
+
 ---
 
-## Jenkins Integration
+## Automated Test Scenarios
 
-Configured Jenkins for:
-
-* Automated Build Execution
-* Maven Test Execution
-* CI/CD Workflow
-
----
-
-# Project Structure
-
-```text
-src/main/java
-│
-├── base
-├── pages
-├── utils
-├── resources
-│
-src/test/java
-│
-├── tests
-```
-
----
-
-# Automated Test Scenarios
-
-## Login Module
+### Login Module
 
 * Valid Login
 * Invalid Login
 * Locked User Validation
 
-## Product Module
+### Product Module
 
 * Product Page Validation
-* Add to Cart
-* Remove Product
+* Add Product to Cart
+* Remove Product from Cart
 
-## Cart Module
+### Cart Module
 
 * Cart Count Validation
+* Single Product Addition
 * Multiple Product Addition
 
-## Checkout Module
+### Checkout Module
 
 * Complete Checkout Flow
 * Invalid Checkout Validation
 * Continue Shopping
 * Cancel Checkout
 
-## Menu Module
+### Menu Module
 
 * Verify Menu Items
 * Logout Validation
 
-## Product Sorting Module
+### Product Sorting Module
 
 * Name (A-Z)
 * Name (Z-A)
@@ -146,121 +161,149 @@ src/test/java
 
 ---
 
-# Parallel Execution
+## Project Structure
 
-Implemented ThreadLocal WebDriver for safe parallel execution.
+src
 
-Example:
+├── main
 
-```xml
-<suite name="SeleniumTests" parallel="methods" thread-count="3">
-```
+│   ├── java
 
----
+│   │   ├── base
 
-# Screenshots
+│   │   ├── pages
 
-Screenshots are automatically captured for:
+│   │   ├── utils
 
-* Failed Tests
-* Skipped Tests
-* Timeout Failures
+│   │   └── resources
 
----
-# Test Screenshots
+│
 
-## Login Test
+├── test
 
-![Login Test](screenshots/verifyLogin.png)
+│   ├── java
 
-## Add To Cart Test
+│   │   ├── tests
 
-![Cart Test](screenshots/verifyaddtocart.png)
+│   │   ├── listeners
 
-## Checkout Test
+│   │   └── dataproviders
 
-![Checkout Test](screenshots/verifyCheckOut.png)
+│
 
-## Continue Shopping
+├── reports
 
-![Continue Shopping](screenshots/verifyContinueShopping.png)
+├── screenshots
 
-## Invalid Checkout Validation
+├── TestData
 
-![Invalid Details](screenshots/verifyInvalidetails.png)
-
-## Menu Validation
-
-![Menu Validation](screenshots/verifyallMenuItems.png)
-
-## Product Sorting Validation
-
-![Sorting Validation](screenshots/verifyallSortingItems.png)
-
-## Logout Validation
-
-![Logout Validation](screenshots/verifylogout.png)
-
----
-# Run the Project
-
-## Using Maven
-
-```bash
-mvn test
-```
+└── testng.xml
 
 ---
 
-## Using TestNG XML
-
-```bash
-Right Click → testNG.xml → Run As → TestNG Suite
-```
-
----
-
-# ⚙️ Configuration
+## Configuration
 
 Framework configuration is maintained using:
 
-```properties
 config.properties
-```
 
 Example:
 
-```properties
 browser=chrome
-url=https://www.saucedemo.com/
+
+environment=qa
+
 username=standard_user
+
 password=secret_sauce
-timeout=10
+
+timeout=30
+
 headless=false
-```
+
+qa.url=https://www.saucedemo.com
+
+uat.url=https://uat-app.com
+
+prod.url=https://prod-app.com
 
 ---
 
-# Reports Location
+## Run the Project
 
-```text
+### Using Maven
+
+mvn clean test
+
+### Using TestNG XML
+
+Right Click → testng.xml → Run As → TestNG Suite
+
+### Run in Headless Mode
+
+headless=true
+
+### Select Environment
+
+mvn test -Denvironment=qa
+
+mvn test -Denvironment=uat
+
+mvn test -Denvironment=prod
+
+---
+
+## Reports
+
+Generated reports can be found in:
+
 /reports
-```
+
+Includes:
+
+* Extent Reports
+* Execution Summary
+* Pass/Fail Statistics
+* Screenshots for Failed Tests
 
 ---
 
-# Future Enhancements
+## Jenkins Pipeline
 
-* REST Assured API Automation
+Pipeline Stages:
+
+1. Checkout Source Code
+2. Build Project
+3. Execute Tests
+4. Publish Extent Reports
+5. Archive Screenshots
+
+---
+
+## GitHub Actions
+
+Configured workflow for:
+
+* Automated CI Execution
+* Headless Chrome Execution
+* Maven Build Verification
+
+---
+
+## Future Enhancements
+
+* REST Assured API Automation Framework
 * Docker Integration
 * Selenium Grid
-* Cross Browser Testing
+* Cross Browser Cloud Execution
+* Database Validation
+* Allure Reporting
 
 ---
 
-# Author
+## Author
 
-PoojaSN-Automates
+Pooja
 
 GitHub:
-[https://github.com/PoojaSN-Automates](https://github.com/PoojaSN-Automates)
+https://github.com/PoojaSN-Automates
