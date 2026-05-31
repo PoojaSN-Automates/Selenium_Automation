@@ -1,6 +1,5 @@
 pipeline {
 
-```
 agent any
 
 stages {
@@ -41,6 +40,6 @@ post {
                          allowEmptyArchive: true
     }
 }
-```
+
 
 }
